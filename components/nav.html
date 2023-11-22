@@ -1,0 +1,55 @@
+<style>
+  nav {
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+    padding-bottom: 20px;
+    justify-content: space-around;
+    background-color: #eee;
+    box-shadow: 0 5px 10px #ddd;
+    height: 100px;
+  }
+
+  .navbar {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+  }
+
+  .navbar li {
+    transition: color 200ms ease;
+  }
+
+  .navbar li:hover,
+  .navbar li.active {
+    color: var(--accent-color);
+  }
+
+  h2 {
+    font-weight: normal;
+    font-family: var(--alt-font);
+  }
+
+  #toggle-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    visibility: hidden;
+  }
+
+  .navbar.hidden + #toggle-menu {
+    font-size: 23px;
+  }
+</style>
+
+<h2>zuza.kliber | Zuzanna Kliber</h2>
+<ul class="navbar hidden">
+  <li><a href="/">Home</a></li>
+  <li><a href="/about/">About</a></li>
+  <li><a href="/kenya/">Kenya</a></li>
+  <li><a href="/japan/">Japan</a></li>
+  <li><a href="/spain/">Spain</a></li>
+  <li><a href="/montenegro/">Montenegro</a></li>
+</ul>
+<button id="toggle-menu" onclick="toggleMenu(this)">☰</button>

@@ -1,0 +1,10 @@
+main {
+  margin: 20px 20vw;
+  display: flex;
+  justify-content: center;
+}
+
+main > div {
+  width: 40%;
+  font-size: 200%;
+}
