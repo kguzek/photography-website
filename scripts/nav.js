@@ -1,4 +1,6 @@
-fetch("/components/nav.html")
+import { base } from "./base.js";
+
+fetch(base + "components/nav.html")
   .then((res) => res.text())
   .then((text) => {
     const oldElem = document.querySelector("script#replace_with_navbar");
@@ -7,10 +9,16 @@ fetch("/components/nav.html")
     oldElem.parentNode.replaceChild(newElem, oldElem);
 
     const path = location.pathname.split("/");
+    const pathSegment = path[base === "/" ? 1 : 2];
     for (const child of document.querySelectorAll(".navbar li")) {
-      if (child.children[0]?.href?.includes(path[1])) {
+      const grandchild = child.children[0];
+      if (!grandchild) continue;
+      const href = grandchild.getAttribute("href");
+
+      if (pathSegment === href.replace("/", "")) {
         child.classList.add("active");
-        break;
+        console.log("doner");
       }
+      grandchild.href = base + href;
     }
   });
