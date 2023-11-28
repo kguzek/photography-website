@@ -1,6 +1,4 @@
-import { base } from "./base.js";
-
-fetch(base + "components/footer.html")
+fetch("../components/footer.html")
   .then((res) => res.text())
   .then((text) => {
     const oldElem = document.querySelector("script#replace_with_footer");

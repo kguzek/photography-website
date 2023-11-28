@@ -1,6 +1,12 @@
-import { base } from "./base.js";
+const isGithubPagesBase =
+  location.hostname.includes("github.io") ||
+  location.pathname.includes("photography-website");
 
-fetch(base + "components/nav.html")
+const base = isGithubPagesBase
+  ? `/${location.pathname.split("/")[1]}/`
+  : "/";
+
+fetch("../components/nav.html")
   .then((res) => res.text())
   .then((text) => {
     const oldElem = document.querySelector("script#replace_with_navbar");
@@ -9,7 +15,7 @@ fetch(base + "components/nav.html")
     oldElem.parentNode.replaceChild(newElem, oldElem);
 
     const path = location.pathname.split("/");
-    const pathSegment = path[base === "/" ? 1 : 2];
+    const pathSegment = path[isGithubPagesBase ? 2 : 1];
     for (const child of document.querySelectorAll(".navbar li")) {
       const grandchild = child.children[0];
       if (!grandchild) continue;
