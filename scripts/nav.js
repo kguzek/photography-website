@@ -2,14 +2,12 @@ const isGithubPagesBase =
   location.hostname.includes("github.io") ||
   location.pathname.includes("photography-website");
 
-const base = isGithubPagesBase
-  ? `/${location.pathname.split("/")[1]}/`
-  : "/";
+const base = isGithubPagesBase ? `/${location.pathname.split("/")[1]}/` : "/";
 
-fetch("../components/nav.html")
+fetch("components/nav.html")
   .then((res) => res.text())
   .then((text) => {
-    const oldElem = document.querySelector("script#replace_with_navbar");
+    const oldElem = document.querySelector("#replace_with_navbar");
     const newElem = document.createElement("nav");
     newElem.innerHTML = text;
     oldElem.parentNode.replaceChild(newElem, oldElem);
