@@ -4,7 +4,7 @@ const isGithubPagesBase =
 
 const base = isGithubPagesBase ? `/${location.pathname.split("/")[1]}/` : "/";
 
-fetch("components/nav.html")
+fetch("./components/nav.html")
   .then((res) => res.text())
   .then((text) => {
     const oldElem = document.querySelector("#replace_with_navbar");
